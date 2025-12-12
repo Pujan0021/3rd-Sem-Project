@@ -1,20 +1,9 @@
 let container = document.querySelector(".mainContainer");
 let inputBox = document.querySelector(".inputBox");
 let searchBox = document.querySelector(".searchBox");
-// let all = document.querySelector(".all");
-// let furniture = document.querySelector(".furniture");
-// let groceries = document.querySelector(".groceries");
-// let beauty = document.querySelector(".beauty");
-// let fragrances = document.querySelector(".fragrances");
 let categoryButtons = document.querySelectorAll(".buttonForCategory");
 let link = "https://dummyjson.com/products";
-
-
-
 // console.log(categoryButtons);
-
-
-
 // Fetch API
 const getData = async () => {
     try {
@@ -28,8 +17,6 @@ const getData = async () => {
         console.log(err, "Error Fetching API")
     }
 }
-
-
 // Product Listing
 const listProduct = () => {
     getData().then(products => {
@@ -61,23 +48,10 @@ const listProduct = () => {
     })
 }
 listProduct();
-
-
-
-
-
-
 // Product List According To the User's Query
 searchBox.addEventListener('click', () => {
     listProduct();
 })
-
-
-
-
-
-
-
 
 //CategoryData According To the Button Presssed
 const categoryData = (filterProducts) => {
@@ -103,9 +77,6 @@ const categoryData = (filterProducts) => {
     }).join("")
     container.innerHTML = items;
 }
-
-
-
 // Category Buttons and ProductList according to the users choice
 categoryButtons.forEach(element => {
     element.addEventListener("click", () => {
