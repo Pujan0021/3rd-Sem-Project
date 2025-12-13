@@ -1,6 +1,7 @@
 let container = document.querySelector(".mainContainer");
 let inputBox = document.querySelector(".inputBox");
 let searchBox = document.querySelector(".searchBox");
+let home = document.querySelector(".home");
 let categoryButtons = document.querySelectorAll(".buttonForCategory");
 
 let link = "https://dummyjson.com/products";
@@ -161,4 +162,7 @@ container.addEventListener("click", (e) => {
             })
         })
     }
+})
+home.addEventListener("click", () => {
+    listProduct();
 })
