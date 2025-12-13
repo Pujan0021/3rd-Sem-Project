@@ -6,6 +6,11 @@
     <title>Document</title>
   </head>
   <link href="./src/output.css" rel="stylesheet" />
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+  />
+
   <body class="bg-gray-200">
     <section>
       <nav
@@ -26,8 +31,8 @@
           </li>
           <li><button class="home hover:cursor-pointer">Home</button></li>
           <li><a href="">Cart</a></li>
-          <li><a href="">About Us</a></li>
-          <li><a href="">Contact</a></li>
+          <li><a href="#aboutus">About Us</a></li>
+          <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
     </section>
@@ -84,6 +89,52 @@
           <button>View Details</button>
         </div> -->
       </div>
+    </section>
+    <section>
+      <footer
+        class="my-1.5 mx-2 rounded-xl bg-emerald-700 text-white flex justify-between px-5 h-2xl"
+      >
+        <div id="aboutus" class="w-sm shadow-amber-500 shadow-2xl p-7">
+          <h2 class="text-center text-xl font-bold">About Us</h2>
+          <p>
+            At TradeHub, we believe shopping should be simple, secure, and
+            enjoyable. Founded with the vision of connecting people to quality
+            products at fair prices, we’ve built a platform where trust meets
+            convenience.
+          </p>
+        </div>
+        <div id="contact" class="w-sm shadow-amber-500 shadow-2xl p-7">
+          <h2 class="text-center text-xl font-bold">Contact Us</h2>
+          <ul class="flex justify-between m-2.5">
+            <li>
+              <a href="#">
+                <i class="bi bi-facebook" style="font-size: 2rem"></i>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <i class="bi bi-instagram" style="font-size: 2rem"></i>
+              </a>
+            </li>
+            <li>
+              <a href="mailto:pujanpandey21@gmail.com">
+                <i
+                  class="bi bi-envelope-fill"
+                  style="font-size: 2rem; color: #c7d2e2"
+                ></i>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <i
+                  class="bi bi-whatsapp"
+                  style="font-size: 2rem; color: #25d366"
+                ></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </footer>
     </section>
     <script src="./Js/script.js"></script>
   </body>
