@@ -64,7 +64,7 @@ const listProduct = () => {
             class="bg-white w-80 h-110 border-none p-5 rounded-xl shadow-2xl my-10 mx-5 transform transition duration-300 hover:scale-105"
             >
             <div class="flex justify-center trackCard"> <img
-            class="w-60 h-60 items-center"
+            class="w-60 h-60 cursor-pointer items-center"
             src=${product.images[0]}
             alt=${product.title.slice(0, 3)}
             data-id=${product.id}
@@ -98,7 +98,7 @@ const categoryData = (filterProducts) => {
         class=" bg-white w-80 h-110 border-none p-5 rounded-xl shadow-2xl my-10 mx-5 transform transition duration-300 hover:scale-105"
         >
         <div class="flex justify-center trackCard"> <img
-        class="w-60 h-60 items-center"
+        class="w-60 h-60 cursor-pointer items-center"
         src=${product.images[0]}
         alt=${product.title}
         data-id=${product.id}
@@ -171,11 +171,11 @@ container.addEventListener("click", (e) => {
             let filterProducts = [product];
             let items = filterProducts.map(product => {
                 return `<div
-            class="bg-white w-2xl h-150 border-none p-5 rounded-xl shadow-2xl my-10 mx-5"
+            class="bg-white w-[600px] border-0 p-3 rounded-xl shadow-2xl my-3 mx-3"
             >
-            <button class="back bg-green-500 p-1 text-white rounded-sm px-2">Back</button>
+            <button class="back w-[120px] bg-red-500 p-1 text-white rounded-sm px-2">Back</button>
             <div class="flex justify-center trackCard"> <img
-            class="w-80 h-70 items-center"
+            class="w-64 h-64 cursor-pointer mx-auto"
             src=${product.images[0]}
             alt=${product.title}
             data-id=${product.id}
@@ -215,7 +215,7 @@ cartIcon.addEventListener("click", () => {
             class="bg-white w-80 h-110 border-none p-5 rounded-xl shadow-2xl my-10 mx-5 transform transition duration-300 hover:scale-105"
             >
             <div class="flex justify-center trackCard"> <img
-            class="w-60 h-60 items-center"
+            class="w-60 h-60 cursor-pointer items-center"
             src=${product.images[0]}
             alt=${product.title}
             data-id=${product.id}
@@ -233,8 +233,8 @@ cartIcon.addEventListener("click", () => {
         container.innerHTML = items;
 
     } else {
-        container.innerHTML = `<div class="flex text-2xl h-52 w-28">
-        <div>No Items In Cart</div></div>`
+        container.innerHTML = `<div class="flex text-2xl my-20 h-52 w-28">
+        <div class="w-12">No Items Found</div></div>`
     }
     let remove = document.querySelectorAll(".removeFromCart");
     remove.forEach(cart => {
