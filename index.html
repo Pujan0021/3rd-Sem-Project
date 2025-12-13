@@ -22,7 +22,7 @@
             <input
               type="text"
               placeholder="Search Item ......."
-              class="bg-white inputBox w-96 border-none rounded-sm text-black text-center"
+              class="bg-white inputBox w-96 border-none rounded-sm text-black text-center sm:w-9"
             /><button
               class="bg-blue-700 searchBox w-28 p-1 rounded-sm text-white"
             >
@@ -92,16 +92,16 @@
         </div> -->
       </div>
     </section>
-    <footer>
+    <footer class="px-3 py-3">
       <div
-        class="my-3 mx-3 mb-3 rounded-xl bg-emerald-700 text-white flex flex-wrap justify-center gap-20 h-3xl"
+        class="m-3 p-5 rounded-xl bg-emerald-700 text-white flex flex-wrap justify-between gap-10 h-auto"
       >
         <div
           id="aboutus"
-          class="w-80 rounded-xl m-5 bg-blue-600 shadow-amber-500 shadow-2xl p-2 py-2"
+          class="w-80 rounded-xl m-5 shadow-amber-500 shadow-2xl p-2 py-2"
         >
           <h2 class="text-center text-2xl font-bold">About Us</h2>
-          <p class="text-xl">
+          <p class="text-xl py-5">
             At TradeHub, we believe shopping should be simple, secure, and
             enjoyable. Founded with the vision of connecting people to quality
             products at fair prices, we’ve built a platform where trust meets
@@ -110,11 +110,25 @@
         </div>
         <div
           id="contact"
-          class="w-80 rounded-xl bg-blue-600 shadow-amber-500 m-5 shadow-2xl p-2"
+          class="w-80 rounded-x shadow-amber-500 m-5 shadow-2xl p-2"
+        >
+          <h2 class="text-center text-2xl font-bold">Payment Methods</h2>
+          <div class="flex justify-center items-center">
+            <ul class="flex-row list-disc text-xl justify-between py-5">
+              <li class="py-3">Khalti</li>
+              <li class="py-3">Esewa</li>
+              <li class="py-3">Google Pay</li>
+              <li class="py-3">MasterCard</li>
+            </ul>
+          </div>
+        </div>
+        <div
+          id="contact"
+          class="w-80 rounded-x shadow-amber-500 m-5 shadow-2xl p-2"
         >
           <h2 class="text-center text-2xl font-bold">Contact Us</h2>
           <div class="flex justify-center items-center">
-            <ul class="flex-row justify-between m-5">
+            <ul class="flex-row justify-between py-5">
               <li>
                 <a href="#">
                   <i class="bi bi-facebook" style="font-size: 2rem"></i>
