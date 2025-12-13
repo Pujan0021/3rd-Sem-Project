@@ -3,6 +3,7 @@ let inputBox = document.querySelector(".inputBox");
 let searchBox = document.querySelector(".searchBox");
 let home = document.querySelector(".home");
 let categoryButtons = document.querySelectorAll(".buttonForCategory");
+let cartIcon = document.querySelector(".cart");
 
 let link = "https://dummyjson.com/products";
 // console.log(categoryButtons);
@@ -18,6 +19,29 @@ const getData = async () => {
         container.innerHTML = '<img class="w-xl h-xl rounded-2xl" src="../img/error.png" alt="Error Occured">';
         console.log(err, "Error Fetching API")
     }
+}// Cart
+let count = 0;
+let arrayOfCarts = [];
+const cart = () => {
+    let addToCarts = document.querySelectorAll(".addToCart");
+
+    addToCarts.forEach(cart => {
+        cart.addEventListener("click", (e) => {
+            count++;
+            let id = e.target.dataset.id;
+            console.log(id)
+            getData().then(products => {
+
+                let addedProducts = products.find(item => item.id == id)
+
+                arrayOfCarts.push(addedProducts);
+
+            }
+            )
+            console.log(count);
+            console.log(arrayOfCarts)
+        })
+    })
 }
 // Product Listing
 const listProduct = () => {
@@ -31,20 +55,21 @@ const listProduct = () => {
             <div class="flex justify-center trackCard"> <img
             class="w-60 h-60 items-center"
             src=${product.images[0]}
-            alt=${product.title}
+            alt=${product.title.slice(0, 3)}
             data-id=${product.id}
                 /></div>
                 
-                <p class="py-2 font-bold">${product.title}</p>
-                <p  class="py-2 flex justify-center gap-10"><span class="opacity-30">${product.description.slice(0, 20) + "...."}</span><button>Read More</button></p>
-                <p class="p-1 bg-gray-500  text-white  border-0 w-fit rounded-sm">${product.category}</p>
+                <p class="py-2 text-center font-bold">${product.title.slice(0, 14)}</p>
+                <p  class="py-2 flex justify-center gap-10"><span class="opacity-30">${product.description.slice(0, 20) + "...."}</span></p>
+                <p class="  p-1 bg-gray-500  text-white  border-0 w-fit rounded-sm">${product.category}</p>
                 <div  class="flex py-2 justify-between">
                 <p>$ ${product.price}</p>
-                <button class="bg-green-500 p-1 text-white rounded-sm px-2" >Add To Cart</button>
+                <button data-id=${product.id} class="addToCart  bg-green-500 p-1 text-white rounded-sm px-2" >Add To Cart</button>
                 </div>
                 </div>`;
         }).join("")
         container.innerHTML = items;
+        cart();
 
         // console.log(items)
     })
@@ -69,11 +94,11 @@ const categoryData = (filterProducts) => {
         /></div>
         
                 <p class="py-2 font-bold">${product.title}</p>
-                <p  class="py-2 flex justify-center gap-10"><span class="opacity-30">${product.description.slice(0, 20) + "...."}</span><button>Read More</button></p>
-                <p class="p-1 bg-gray-500  text-white  border-0 w-fit rounded-sm">${product.category}</p>
+                <p  class="py-2 flex justify-center gap-10"><span class="opacity-30">${product.description.slice(0, 20) + "...."}</span></p>
+                <p class=" p-1 bg-gray-500  text-white  border-0 w-fit rounded-sm">${product.category}</p>
                 <div  class="flex py-2 justify-between">
                 <p>$ ${product.price}</p>
-                <button class="bg-green-500 p-1 text-white rounded-sm px-2" >Add To Cart</button>
+                <button data-id=${product.id} class="addToCart  bg-green-500 p-1 text-white rounded-sm px-2" >Add To Cart</button>
                 </div>
                 </div>`;
     }).join("")
@@ -146,14 +171,15 @@ container.addEventListener("click", (e) => {
                 
                 <p class="py-2 text-2xl font-bold">${product.title}</p>
                 <p  class="py-2 flex justify-center gap-10"><span class="opacity-30">${product.description.slice(0, 150) + "...."}</span></p>
-                <p class="p-1 bg-gray-500  text-white  border-0 w-fit rounded-sm">${product.category}</p>
+                <p class="  p-1 bg-gray-500  text-white  border-0 w-fit rounded-sm">${product.category}</p>
                 <div  class="flex py-2 justify-between">
                 <p class="text-xl">$ ${product.price}</p>
-                <button class="bg-green-500 p-1 text-white rounded-sm px-2" >Add To Cart</button>
+                <button data-id=${product.id} class="addToCart bg-green-500 p-1 text-white rounded-sm px-2" >Add To Cart</button>
                 </div>
                 </div>`;
             }).join("")
             container.innerHTML = items;
+            cart();
 
             //Back Button
             let backButton = document.querySelector(".back");
@@ -163,6 +189,49 @@ container.addEventListener("click", (e) => {
         })
     }
 })
+//Home Page
 home.addEventListener("click", () => {
     listProduct();
+})
+
+// CartIcon
+
+cartIcon.addEventListener("click", () => {
+    if (arrayOfCarts.length > 0) {
+        let items = arrayOfCarts.map(product => {
+            return `<div
+            class="bg-white w-80 h-110 border-none p-5 rounded-xl shadow-2xl my-10 mx-5 transform transition duration-300 hover:scale-105"
+            >
+            <div class="flex justify-center trackCard"> <img
+            class="w-60 h-60 items-center"
+            src=${product.images[0]}
+            alt=${product.title}
+            data-id=${product.id}
+                /></div>
+                
+                <p class="py-2 font-bold">${product.title}</p>
+                <p  class="py-2 flex justify-center gap-10"><span class="opacity-30">${product.description.slice(0, 20) + "...."}</span>
+                <p class="  p-1 bg-gray-500  text-white  border-0 w-fit rounded-sm">${product.category}</p>
+                <div  class="flex py-2 justify-between">
+                <p>$ ${product.price}</p>
+                <button data-id=${product.id} class="removeFromCart bg-emerald-700 p-1 text-white rounded-sm px-2" >Remove</button>
+                </div>
+                </div>`;
+        }).join("")
+        container.innerHTML = items;
+
+    } else {
+        container.innerHTML = `<h2 class="text-2xl">No Items In Cart</h2>`
+    }
+    let remove = document.querySelectorAll(".removeFromCart");
+    remove.forEach(cart => {
+        cart.addEventListener("click", (e) => {
+            let id = e.target.dataset.id;
+            console.log(id);
+            let index = arrayOfCarts.findIndex(item => item.id == id)
+            arrayOfCarts.splice(index, 1);
+        })
+    })
+
+
 })
