@@ -57,6 +57,8 @@ const listProduct = () => {
     getData().then(products => {
         let query = inputBox.value.trim().toLowerCase();
         let filterProducts = products.filter(item => item.title.toLowerCase().includes(query));
+        inputBox.value = "";
+
         let items = filterProducts.map(product => {
             return `<div
             class="bg-white w-80 h-110 border-none p-5 rounded-xl shadow-2xl my-10 mx-5 transform transition duration-300 hover:scale-105"
@@ -68,7 +70,7 @@ const listProduct = () => {
             data-id=${product.id}
                 /></div>
                 
-                <p class="py-2 text-center font-bold">${product.title.slice(0, 14)}</p>
+                <p class="py-2 text-center text-xl text-gray-900 font-bold">${product.title.slice(0, 14)}</p>
                 <p  class="py-2 flex justify-center gap-10"><span class="opacity-30">${product.description.slice(0, 20) + "...."}</span></p>
                 <p class="  p-1 bg-gray-500  text-white  border-0 w-fit rounded-sm">${product.category}</p>
                 <div  class="flex py-2 justify-between">
@@ -231,7 +233,7 @@ cartIcon.addEventListener("click", () => {
         container.innerHTML = items;
 
     } else {
-        container.innerHTML = `<div class="flex justify-center items-center text-2xl min-h-52 w-28">
+        container.innerHTML = `<div class="flex text-2xl h-52 w-28">
         <div>No Items In Cart</div></div>`
     }
     let remove = document.querySelectorAll(".removeFromCart");
