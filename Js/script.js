@@ -5,7 +5,6 @@ let home = document.querySelector(".home");
 let categoryButtons = document.querySelectorAll(".buttonForCategory");
 let cartIcon = document.querySelector(".cart");
 let counter = document.querySelector(".counter");
-
 let link = "https://dummyjson.com/products";
 // console.log(categoryButtons);
 // Fetch API
@@ -38,6 +37,13 @@ const cart = () => {
                 let addedProducts = products.find(item => item.id == id)
 
                 arrayOfCarts.push(addedProducts);
+                Swal.fire({
+                    title: 'Success!',
+                    text: `${addedProducts.title} has been added to the cart.`,
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                });
+
 
             }
             )
@@ -225,7 +231,8 @@ cartIcon.addEventListener("click", () => {
         container.innerHTML = items;
 
     } else {
-        container.innerHTML = `<h2 class="text-2xl">No Items In Cart</h2>`
+        container.innerHTML = `<div class="flex justify-center items-center text-2xl min-h-52 w-28">
+        <div>No Items In Cart</div></div>`
     }
     let remove = document.querySelectorAll(".removeFromCart");
     remove.forEach(cart => {
@@ -236,6 +243,13 @@ cartIcon.addEventListener("click", () => {
             arrayOfCarts.splice(index, 1);
             count--;
             counter.innerText = count;
+            Swal.fire({
+                title: 'Removed!',
+                text: `The item has been removed from your cart`,
+                icon: 'warning',
+                confirmButtonText: 'OK'
+            });
+
         })
     })
 
