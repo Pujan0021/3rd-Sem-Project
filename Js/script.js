@@ -4,6 +4,7 @@ let searchBox = document.querySelector(".searchBox");
 let home = document.querySelector(".home");
 let categoryButtons = document.querySelectorAll(".buttonForCategory");
 let cartIcon = document.querySelector(".cart");
+let counter = document.querySelector(".counter");
 
 let link = "https://dummyjson.com/products";
 // console.log(categoryButtons);
@@ -28,6 +29,8 @@ const cart = () => {
     addToCarts.forEach(cart => {
         cart.addEventListener("click", (e) => {
             count++;
+            counter.innerText = count;
+
             let id = e.target.dataset.id;
             console.log(id)
             getData().then(products => {
@@ -103,6 +106,7 @@ const categoryData = (filterProducts) => {
                 </div>`;
     }).join("")
     container.innerHTML = items;
+    cart();
 }
 // Category Buttons and ProductList according to the users choice
 categoryButtons.forEach(element => {
@@ -230,8 +234,9 @@ cartIcon.addEventListener("click", () => {
             console.log(id);
             let index = arrayOfCarts.findIndex(item => item.id == id)
             arrayOfCarts.splice(index, 1);
+            count--;
+            counter.innerText = count;
         })
     })
-
 
 })
