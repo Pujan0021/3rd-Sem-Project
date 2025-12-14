@@ -173,7 +173,7 @@ container.addEventListener("click", (e) => {
                 return `<div
             class="bg-white w-[600px] border-0 p-3 rounded-xl shadow-2xl my-3 mx-3"
             >
-            <button class="back w-[120px] bg-red-500 p-1 text-white rounded-sm px-2">Back</button>
+           <p class="text-xl hover:cursor-pointer hover:text-red-600"> <i class=" back bi bi-arrow-left"></i> </p>
             <div class="flex justify-center trackCard"> <img
             class="w-64 h-64 cursor-pointer mx-auto"
             src=${product.images[0]}
