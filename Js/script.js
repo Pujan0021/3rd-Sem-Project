@@ -206,53 +206,65 @@ home.addEventListener("click", () => {
     listProduct();
 })
 
-// CartIcon
 
-cartIcon.addEventListener("click", () => {
+//  List cart items
+function renderCart() {
     if (arrayOfCarts.length > 0) {
         let items = arrayOfCarts.map(product => {
-            return `<div
-            class="bg-white w-80 h-110 border-none p-5 rounded-xl shadow-2xl my-10 mx-5 transform transition duration-300 hover:scale-105"
-            >
-            <div class="flex justify-center trackCard"> <img
-            class="w-60 h-60 cursor-pointer items-center"
-            src=${product.images[0]}
-            alt=${product.title}
-            data-id=${product.id}
-                /></div>
-                
-                <p class="py-2 font-bold">${product.title}</p>
-                <p  class="py-2 flex justify-center gap-10"><span class="opacity-30">${product.description.slice(0, 20) + "...."}</span>
-                <p class="  p-1 bg-gray-500  text-white  border-0 w-fit rounded-sm">${product.category}</p>
-                <div  class="flex py-2 justify-between">
-                <p>$ ${product.price}</p>
-                <button data-id=${product.id} class="removeFromCart bg-emerald-700 p-1 text-white rounded-sm px-2" >Remove</button>
+            return `
+            <div class="bg-white w-80 h-110 border-none p-5 rounded-xl shadow-2xl my-10 mx-5 transform transition duration-300 hover:scale-105">
+                <div class="flex justify-center trackCard">
+                    <img class="w-60 h-60 cursor-pointer items-center"
+                         src="${product.images[0]}"
+                         alt="${product.title}"
+                         data-id="${product.id}" />
                 </div>
-                </div>`;
-        }).join("")
+                <p class="py-2 font-bold">${product.title}</p>
+                <p class="py-2 flex justify-center gap-10">
+                    <span class="opacity-30">${product.description.slice(0, 20) + "...."}</span>
+                </p>
+                <p class="p-1 bg-gray-500 text-white border-0 w-fit rounded-sm">${product.category}</p>
+                <div class="flex py-2 justify-between">
+                    <p>$ ${product.price}</p>
+                    <button data-id="${product.id}" class="removeFromCart bg-emerald-700 p-1 text-white rounded-sm px-2">Remove</button>
+                </div>
+            </div>`;
+        }).join("");
         container.innerHTML = items;
-
     } else {
-        container.innerHTML = `<div class="flex text-2xl my-20 h-52 w-28">
-        <div class="w-12">No Items Found</div></div>`
+        container.innerHTML = `
+            <div class="flex text-2xl my-20 h-52 w-28">
+                <div class="w-12">No Items Found</div>
+            </div>`;
     }
-    let remove = document.querySelectorAll(".removeFromCart");
-    remove.forEach(cart => {
-        cart.addEventListener("click", (e) => {
-            let id = e.target.dataset.id;
-            console.log(id);
-            let index = arrayOfCarts.findIndex(item => item.id == id)
+}
+
+// Show cart when icon clicked
+cartIcon.addEventListener("click", () => {
+    renderCart();
+});
+
+//  Remove buttons
+container.addEventListener("click", (e) => {
+    if (e.target.classList.contains("removeFromCart")) {
+        let id = e.target.dataset.id;
+        console.log(id);
+
+        let index = arrayOfCarts.findIndex(item => item.id == id);
+        if (index !== -1) {
             arrayOfCarts.splice(index, 1);
-            count--;
-            counter.innerText = count;
-            Swal.fire({
-                title: 'Removed!',
-                text: `The item has been removed from your cart`,
-                icon: 'warning',
-                confirmButtonText: 'OK'
-            });
+        }
 
-        })
-    })
+        count = arrayOfCarts.length;
+        counter.innerText = count;
 
-})
+        Swal.fire({
+            title: 'Removed!',
+            text: 'The item has been removed from your cart',
+            icon: 'warning',
+            confirmButtonText: 'OK'
+        });
+
+        renderCart();
+    }
+});
