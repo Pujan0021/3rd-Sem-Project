@@ -16,7 +16,7 @@ const getData = async () => {
         let data = dataFromApi.products;
         return data;
     } catch (err) {
-        container.innerHTML = '<img class="w-xl h-xl rounded-2xl" src="../img/error.png" alt="Error Occured">';
+        container.innerHTML = '<img class="w-[500px] h-[500px] rounded-2xl" src="../img/error.png" alt="Error Occured">';
         console.log(err, "Error Fetching API")
     }
 }// Cart
