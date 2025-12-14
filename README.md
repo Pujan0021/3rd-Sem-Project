@@ -1,7 +1,7 @@
 # 🛒 TradeHub
 
 TradeHub is a lightweight e-commerce website built using **HTML**, **TailwindCSS**, and **JavaScript**.  
-It delivers a responsive shopping experience with product search, category filtering, cart management, and a simple checkout flow — all without backend dependencies.
+It delivers a responsive shopping experience with product search, category filtering, and cart management without backend dependencies.
 
 
 
