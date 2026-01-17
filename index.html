@@ -41,12 +41,28 @@
       </nav>
     </section>
     <section>
-      <div class="flex justify-center">
+      <div
+        class="md:hidden bg-emerald-700 my-1.5 mx-1 rounded-xl text-amber-50 flex justify-center py-2 px-2"
+      >
+        <ul
+          class="flex flex-row items-center space-x-5 md:hidden justify-center"
+        >
+          <li class=""><button class="home">Home</button></li>
+          <li class="cursor-pointer cart">
+            <i class="bi bi-cart-fill"><sub class="counter">0</sub></i>
+          </li>
+          <li class=""><a href="#aboutus">About Us</a></li>
+          <li class=""><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </section>
+    <section>
+      <div class="flex justify-center flex-">
         <div
-          class="bg-blue-700 w-fit rounded-xl text-amber-50 py-1 justify-center px-1"
+          class="bg-emerald-700 my-1 mx-1 rounded-xl text-amber-50 flex justify-center py-1 px-1"
         >
           <ul
-            class="flex-row w-fit justify-center text-xl my-2 mx-5 gap-20 md:flex"
+            class="flex-row w-fit justify-center text-xl my-1 mx-3 gap-10 md:flex"
           >
             <li class="cursor-pointer hover:">
               <button class="buttonForCategory hover:underline">All</button>

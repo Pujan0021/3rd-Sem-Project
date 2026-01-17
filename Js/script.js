@@ -1,10 +1,10 @@
 let container = document.querySelector(".mainContainer");
 let inputBox = document.querySelector(".inputBox");
 let searchBox = document.querySelector(".searchBox");
-let home = document.querySelector(".home");
+let home = document.querySelectorAll(".home");
 let categoryButtons = document.querySelectorAll(".buttonForCategory");
-let cartIcon = document.querySelector(".cart");
-let counter = document.querySelector(".counter");
+let cartIcon = document.querySelectorAll(".cart");
+let counter = document.querySelectorAll(".counter");
 let link = "https://dummyjson.com/products";
 // console.log(categoryButtons);
 // Fetch API
@@ -28,7 +28,12 @@ const cart = () => {
     addToCarts.forEach(cart => {
         cart.addEventListener("click", (e) => {
             count++;
-            counter.innerText = count;
+            counter.forEach(
+                c => {
+
+                    c.innerText = count;
+                }
+            )
 
             let id = e.target.dataset.id;
             console.log(id)
@@ -202,8 +207,11 @@ container.addEventListener("click", (e) => {
     }
 })
 //Home Page
-home.addEventListener("click", () => {
-    listProduct();
+home.forEach(h => {
+
+    h.addEventListener("click", () => {
+        listProduct();
+    })
 })
 
 
@@ -240,9 +248,11 @@ function renderCart() {
 }
 
 // Show cart when icon clicked
-cartIcon.addEventListener("click", () => {
-    renderCart();
-});
+cartIcon.forEach(cart => {
+    cart.addEventListener("click", () => {
+        renderCart();
+    });
+})
 
 //  Remove buttons
 container.addEventListener("click", (e) => {
@@ -256,7 +266,11 @@ container.addEventListener("click", (e) => {
         }
 
         count = arrayOfCarts.length;
-        counter.innerText = count;
+        counter.forEach(c => {
+            c.innerText = count;
+        })
+
+
 
         Swal.fire({
             title: 'Removed!',
